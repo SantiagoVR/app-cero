@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Localización</title> 
+  <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() 
+    {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+    function onSuccess(position) 
+    {
+        var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitud: ' + position.coords.latitude + '<br />' +
+                            'Longitud: ' + position.coords.longitude + '<br />' +
+                            'Altitud: ' + position.coords.altitude + '<br />' +
+                            'Precision: ' + position.coords.accuracy + '<br />' +
+                            'Precision altitud: ' + position.coords.altitudeAccuracy + '<br />' +
+                            'Partida: ' + position.coords.heading + '<br />' +
+                            'Velocidad: ' + position.coords.speed + '<br />' +
+                            'Timestamp: ' + position.timestamp + '<br />';
+    }
+    function onError(error) 
+    {
+        alert('Código error: ' + error.code + '\n' +
+              'Error: ' + error.message + '\n');
+    }
+    </script>
+	<link rel="stylesheet" type="text/css" href="css/o.css" />
+  </head>
+  <body>
+    <p id="geolocation">Obteniendo localizacion, espere por favor >>>>>>> </p>
+  </body>
+</html>
